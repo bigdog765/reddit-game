@@ -1,5 +1,5 @@
 import './createPost.js';
-
+import App from '../webroot/App.jsx'
 import { Devvit, useState } from '@devvit/public-api';
 
 // Defines the messages that are exchanged between Devvit and Web View
@@ -24,7 +24,7 @@ Devvit.configure({
 
 // Add a custom post type to Devvit
 Devvit.addCustomPostType({
-  name: 'Webview Example',
+  name: 'Reddit Hackathon Game',
   height: 'tall',
   render: (context) => {
     // Load username with `useAsync` hook
