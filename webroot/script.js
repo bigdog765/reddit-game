@@ -1,7 +1,6 @@
+import Letters from './letters.js'
 class App {
-  letters = []
   constructor() {
-    const output = document.querySelector('#messageOutput');
     const increaseButton = document.querySelector('#btn-increase');
     const decreaseButton = document.querySelector('#btn-decrease');
     const lettersButton = document.querySelector('#btn-letters');
@@ -17,9 +16,6 @@ class App {
       // Reserved type for messages sent via `context.ui.webView.postMessage`
       if (type === 'devvit-message') {
         const { message } = data;
-
-        // Always output full message
-        output.replaceChildren(JSON.stringify(message, undefined, 2));
 
         // Load initial data
         if (message.type === 'initialData') {
@@ -53,25 +49,23 @@ class App {
       );
     });
     lettersButton.addEventListener('click', () => {
-      this.giveInitialLetters();
-      lettersLabel.innerText = this.letters
+      const userLetters = new Letters()
+      lettersLabel.innerText = userLetters.letters
     });
-    
 
-  }
-  giveInitialLetters(number=12){
-    this.letters = []
-    const vowels = ['A','E','I','O','U']
-    const randomIndex = Math.floor(Math.random() * number)
-    for(let i = 0; i < number; i++){
-      // Ensure at least one letter is a vowel
-      if (i === randomIndex) this.letters.push(vowels[Math.floor(Math.random() * vowels.length)])
-      else{
-        // Generate a random uppercase letter ASCII value
-        const randomAscii = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-        this.letters.push(randomAscii)
-      }
-    }
+    const dropzone = document.getElementById('dropzone');
+
+    // Dropzone functionality
+    dropzone.addEventListener('dragover', (event) => {
+      event.preventDefault(); // Allow drop
+    });
+
+    dropzone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text/plain'); // Retrieve the dropped item's value
+      const index = event.dataTransfer.getData('index'); // Retrieve the item's index (optional)
+      dropzone.textContent = `Dropped: ${data} (Index: ${index})`;
+    });
   }
 }
 
