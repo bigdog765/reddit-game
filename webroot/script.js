@@ -1,4 +1,5 @@
 import Letters from './letters.js'
+import Dropzone from './dropzone.js'
 class App {
   constructor() {
     const increaseButton = document.querySelector('#btn-increase');
@@ -8,6 +9,7 @@ class App {
     const counterLabel = document.querySelector('#counter');
     const lettersLabel = document.querySelector('#letters');
     var counter = 0;
+    new Dropzone()
 
     // When the Devvit app sends a message with `context.ui.webView.postMessage`, this will be triggered
     window.addEventListener('message', (ev) => {
@@ -50,22 +52,9 @@ class App {
     });
     lettersButton.addEventListener('click', () => {
       const userLetters = new Letters()
-      lettersLabel.innerText = userLetters.letters
     });
 
-    const dropzone = document.getElementById('dropzone');
-
-    // Dropzone functionality
-    dropzone.addEventListener('dragover', (event) => {
-      event.preventDefault(); // Allow drop
-    });
-
-    dropzone.addEventListener('drop', (event) => {
-      event.preventDefault();
-      const data = event.dataTransfer.getData('text/plain'); // Retrieve the dropped item's value
-      const index = event.dataTransfer.getData('index'); // Retrieve the item's index (optional)
-      dropzone.textContent = `Dropped: ${data} (Index: ${index})`;
-    });
+    
   }
 }
 

@@ -1,8 +1,13 @@
 export default class Letters {
     letters = []
+    container = document.getElementById('letter-container');
+
     constructor() {
-        this.setInitialLetters();
-        this.createDraggableLetters()
+      // Remove previous instance data 
+      this.letters = []
+      this.container.innerHTML = '';
+      this.setInitialLetters();
+      this.createDraggableLetters()
     }
     generateCommonLettersArray() {
       // Probability of letters in english language
@@ -25,7 +30,6 @@ export default class Letters {
       return lettersArray;
     }
     setInitialLetters(number=7){
-      this.letters = []
       const commonLetters = this.generateCommonLettersArray()
       for(let i = 0; i < number; i++){
         const randomIndex = Math.floor(Math.random() * commonLetters.length);
@@ -33,32 +37,32 @@ export default class Letters {
       }
     }
     createDraggableLetters(){
-        const container = document.getElementById('letter-container');
-        // Create draggable elements
-        this.letters.forEach((letter, index) => {
-            const element = document.createElement('div');
-            element.textContent = letter;
-            element.setAttribute('draggable', 'true');
-            element.style.width = '100px';
-            element.style.height = '50px';
-            element.style.background = 'lightblue';
-            element.style.textAlign = 'center';
-            element.style.lineHeight = '50px';
-            element.style.cursor = 'grab';
-        
-            // Add drag event listeners
-            element.addEventListener('dragstart', (event) => {
+      // Create draggable elements
+      this.letters.forEach((letter, index) => {
+          const element_letter = document.createElement('div');
+          element_letter.setAttribute('drag_letter', index); // Unique identifier
+          element_letter.textContent = letter;
+          element_letter.setAttribute('draggable', 'true');
+          element_letter.style.width = '100px';
+          element_letter.style.height = '50px';
+          element_letter.style.background = 'lightblue';
+          element_letter.style.textAlign = 'center';
+          element_letter.style.lineHeight = '50px';
+          element_letter.style.cursor = 'grab';
+      
+          // Add drag event listeners
+          element_letter.addEventListener('dragstart', (event) => {
             event.dataTransfer.setData('text/plain', letter); // Pass the item's value
-            event.dataTransfer.setData('index', index); // Optionally, pass the index
-            element.style.opacity = '0.5'; // Visual cue during drag
-            });
-        
-            element.addEventListener('dragend', () => {
-            element.style.opacity = '1'; // Reset after drag
-            });
-        
-            container.appendChild(element); // Append the element to the container
-        });
+            event.dataTransfer.setData('drag_letter', index); // Pass the id
+            element_letter.style.opacity = '0.5'; // Visual cue during drag
+          });
+      
+          element_letter.addEventListener('dragend', () => {
+            element_letter.style.opacity = '1'; // Reset after drag
+          });
+      
+          this.container.appendChild(element_letter); // Append the element to the container
+      });
     }
 }
   
