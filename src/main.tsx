@@ -90,13 +90,6 @@ Devvit.addCustomPostType({
           <spacer />
           <vstack alignment="start middle">
             <hstack>
-              <text size="medium">Username:</text>
-              <text size="medium" weight="bold">
-                {' '}
-                {username ?? ''}
-              </text>
-            </hstack>
-            <hstack>
               <text size="medium">Current counter:</text>
               <text size="medium" weight="bold">
                 {' '}

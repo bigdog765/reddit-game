@@ -11,15 +11,10 @@
   </head>
   <body>
     <h1>WordStack</h1>
-    <h3>Your username is <span id="username">Guest</span></h3>
-    <h3>Current counter is at: <span id="counter">0</span></h3>
-    <div class="button-container">
-      <button id="btn-increase">Increase Counter ⬆️</button>
-      <button id="btn-decrease">Decrease Counter ⬇️</button>
+    <div id="dropzone" class="dropzone">
+      <div id="cells"></div>
     </div>
-    <div id="dropzone" class="dropzone"></div>
   
-    <button id="btn-letters">Give me letters!</button>
     <div id="letter-container" style="display: flex; gap: 10px;"></div>
     
     <script type="module" src="script.js"></script>

@@ -22,39 +22,18 @@ class App {
         // Load initial data
         if (message.type === 'initialData') {
           const { username, currentCounter } = message.data;
-          usernameLabel.innerText = username;
-          counterLabel.innerText = counter = currentCounter;
+          //counterLabel.innerText = counter = currentCounter;
         }
 
         // Update counter
         if (message.type === 'updateCounter') {
           const { currentCounter } = message.data;
-          counterLabel.innerText = counter = currentCounter;
+          //counterLabel.innerText = counter = currentCounter;
         }
       }
     });
-
-    increaseButton.addEventListener('click', () => {
-      // Sends a message to the Devvit app
-      window.parent?.postMessage(
-        { type: 'setCounter', data: { newCounter: Number(counter + 1) } },
-        '*'
-      );
-    });
-
-    decreaseButton.addEventListener('click', () => {
-      console.log("hi")
-      // Sends a message to the Devvit app
-      window.parent?.postMessage(
-        { type: 'setCounter', data: { newCounter: Number(counter - 1) } },
-        '*'
-      );
-    });
-    lettersButton.addEventListener('click', () => {
-      const userLetters = new Letters()
-    });
-
     
+    const userLetters = new Letters()
   }
 }
 

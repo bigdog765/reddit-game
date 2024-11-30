@@ -1,30 +1,21 @@
+import Cell from './cell.js'
 export default class Dropzone {
     currentLetters = [] // Current letters added to zone
+    dimensionX = 8
+    dimensionY = 8
     constructor() {
         const dropzone = document.getElementById('dropzone');
+        this.createCells(this.dimensionX, this.dimensionY, dropzone)
 
-        // Dropzone functionality
-        dropzone.addEventListener('dragover', (event) => {
-            event.preventDefault(); // Allow drop
-        });
-
-        dropzone.addEventListener('drop', (event) => {
-            event.preventDefault();
-            const dataLetter = event.dataTransfer.getData('text/plain'); // Retrieve the dropped item's value
-            const letterIndex = event.dataTransfer.getData('drag_letter');
-            
-            const draggedElement = document.querySelector(`[drag_letter="${letterIndex}"]`); // Find the element by custom data attribute
-            
-            // Optionally, clone the dragged element
-            const droppedElement = draggedElement.cloneNode(true);
-            
-            droppedElement.style.opacity = '1'; // Reset opacity if it was changed during drag
-            
-            // Append the exact visual object into the drop zone
-            dropzone.appendChild(droppedElement);
-            this.currentLetters.push(dataLetter)
-            //dropzone.textContent = `Dropped: ${dataLetter}, letter queue is ${this.currentLetters}`;
-        });
+        
+    }
+    createCells(x, y, dropzone){
+        for(let i = 0; i < x; i++){
+            for(let j = 0; j < y; j++){
+                const cell = new Cell(i,j)
+                dropzone.appendChild(cell.element)
+            }
+        }
     }
     
 }
