@@ -40,15 +40,11 @@ export default class Letters {
       // Create draggable elements
       this.letters.forEach((letter, index) => {
           const element_letter = document.createElement('div');
+          element_letter.className = 'letter'
           element_letter.setAttribute('drag_letter', index); // Unique identifier
           element_letter.textContent = letter;
           element_letter.setAttribute('draggable', 'true');
-          element_letter.style.width = '100px';
-          element_letter.style.height = '50px';
-          element_letter.style.background = 'lightblue';
-          element_letter.style.textAlign = 'center';
-          element_letter.style.lineHeight = '50px';
-          element_letter.style.cursor = 'grab';
+          
       
           // Add drag event listeners
           element_letter.addEventListener('dragstart', (event) => {
