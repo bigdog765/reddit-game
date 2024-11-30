@@ -72,7 +72,7 @@ h3 {
 .cell {
   width: 83px; 
   height: 50px;
-  border: 1px solid #919191;
+  border: 1px solid #dfdfdf;
   box-sizing: border-box; /* Ensures the border doesn't affect dimensions */
   overflow: hidden; /* Prevent content overflow */
   position: relative; /* Ensures dropped elements align correctly */
@@ -98,12 +98,27 @@ button {
   margin: 0;
 }
 .letter {
-  width : 100px;
+  width : 75px;
   height : 50px;
   background : lightblue;
   text-align : center;
   line-height : 50px;
   cursor : grab;
+}
+
+.user_bar{
+  display: flex;
+}
+.button-area{
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  margin-left: 10px;
+  row-gap: 2px;
+}
+.button-area button {
+  height: 5px; /* Set the button height */
+  padding: 0; /* Remove internal padding */
+  line-height: 1; /* Adjust line height */
 }
 
 button:hover {
