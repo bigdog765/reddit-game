@@ -62,7 +62,9 @@ h3 {
 .dropzone {
   width: 664px; /*Must be proportional to dropzone width ( 8 cells * 83px width )*/
   height: 400px;
-  border: 2px dashed lightgray;
+  /* border: 2px dashed lightgray; */
+  background: linear-gradient(180deg, #fc4ded, #60a5fa);
+  border-radius: 10px;
   margin-top: 2px;
   display: flex;
   align-items: center;
@@ -72,7 +74,7 @@ h3 {
 .cell {
   width: 83px; 
   height: 50px;
-  border: 1px solid #dfdfdf;
+  /* border: 1px solid #dfdfdf; */
   box-sizing: border-box; /* Ensures the border doesn't affect dimensions */
   overflow: hidden; /* Prevent content overflow */
   position: relative; /* Ensures dropped elements align correctly */
@@ -83,46 +85,53 @@ h3 {
 
 button {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 15px;
   border: none;
   border-radius: var(--border-radius);
   background-color: var(--accent-color);
   color: white;
-  font-size: 0.9rem;
+  font-size: 18px;
+
   font-weight: 500;
   cursor: pointer;
   transition:
     transform 0.2s,
     box-shadow 0.2s;
   box-shadow: var(--shadow);
-  margin: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 100px;
+
+ 
 }
 .letter {
-  width : 75px;
+  width : 80px;
   height : 50px;
-  background : lightblue;
+  background : #FFEFD0;
   text-align : center;
   line-height : 50px;
+  border-radius: 10px;
   cursor : grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
 
 .user_bar{
-  display: flex;
+  display: block;
+  /* background-color: #fc4ded; */
 }
+
 .button-area{
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  margin-left: 10px;
-  row-gap: 2px;
-}
-.button-area button {
-  height: 5px; /* Set the button height */
-  padding: 0; /* Remove internal padding */
-  line-height: 1; /* Adjust line height */
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 10px; */
+  /* row-gap: 2px; */
 }
 
 button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
