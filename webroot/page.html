@@ -1,29 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta charset="UTF-8" />
-    <title>Web View Example</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="dropzone" class="dropzone">
-      <div id="cells"></div>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8" />
+  <title>Web View Example</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="dropzone" class="dropzone">
+    <div id="cells"></div>
+  </div>
+  <div class="user_bar">
+    <div id="letter-container" style="display: flex; gap: 10px;"></div>
+
+    <div class="button-area">
+      <button id="submit-word">Submit</button>
+      <button id="clear">Clear</button>
     </div>
-    <div class="user_bar">
-      <div id="letter-container" style="display: flex; gap: 10px;"></div>
-        <div class="button-area">
-          <button id="submit-word">Submit</button>
-          <button id="clear">Clear</button>
-        </div>
-    </div>
-    
-    
-    
-    
-    <script type="module" src="script.js"></script>
-  </body>
+  </div>
+
+
+
+
+  <script type="module" src="script.js"></script>
+</body>
+
 </html>
