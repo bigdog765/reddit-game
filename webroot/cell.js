@@ -3,7 +3,8 @@ export default class Cell {
     y
     element
     letter
-    constructor(x, y) {
+    submitted = false
+    constructor(x, y, parent) {
         this.x = x
         this.y = y
         // Create a new cell
@@ -26,16 +27,22 @@ export default class Cell {
             
             // Optionally, clone the dragged element
             const droppedElement = draggedElement.cloneNode(true);
-            
+
             droppedElement.style.opacity = '1'; // Reset opacity if it was changed during drag
-            droppedElement.style.height = this.element.style.height
-            droppedElement.style.width = this.element.style.width
+
+            const computedStyle = window.getComputedStyle(this.element);
+            droppedElement.style.height = computedStyle.height;
+            droppedElement.style.width = computedStyle.width;
             
             // Append the exact visual object into the drop zone
             this.element.appendChild(droppedElement);
             this.letter = dataLetter
-            //dropzone.textContent = `Dropped: ${dataLetter}, letter queue is ${this.currentLetters}`;
+            parent.addLetterToCell(this)
         });
+    }
+    clear(){
+        this.element.innerHTML = '';
+        this.letter = undefined
     }
     
 }

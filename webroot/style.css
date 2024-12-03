@@ -74,7 +74,7 @@ h3 {
 .cell {
   width: 83px; 
   height: 50px;
-  /* border: 1px solid #dfdfdf; */
+  border: 1px solid #bfaefd;
   box-sizing: border-box; /* Ensures the border doesn't affect dimensions */
   overflow: hidden; /* Prevent content overflow */
   position: relative; /* Ensures dropped elements align correctly */
@@ -90,7 +90,7 @@ button {
   border-radius: var(--border-radius);
   background-color: var(--accent-color);
   color: white;
-  font-size: 18px;
+  font-size: 14px;
 
   font-weight: 500;
   cursor: pointer;
@@ -98,15 +98,13 @@ button {
     transform 0.2s,
     box-shadow 0.2s;
   box-shadow: var(--shadow);
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  
   max-width: 100px;
-
+  margin-left: 10px;
  
 }
 .letter {
-  width : 80px;
+  width : 65px;
   height : 50px;
   background : #FFEFD0;
   text-align : center;
@@ -118,7 +116,7 @@ button {
 }
 
 .user_bar{
-  display: block;
+  display: flex;
   /* background-color: #fc4ded; */
 }
 
@@ -126,8 +124,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-left: 10px; */
-  /* row-gap: 2px; */
+  margin-left: 2px;
 }
 
 button:hover {
@@ -141,6 +138,9 @@ button:active {
 
 #btn-decrease {
   background-color: var(--primary-color);
+}
+#clear{
+  background-color: red;
 }
 
 pre {
