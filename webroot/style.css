@@ -62,8 +62,6 @@ h3 {
 }
 
 #logo:hover {
-
-
   transform: translateY(-10px);
 }
 
@@ -83,9 +81,9 @@ h3 {
 }
 
 .dropzone {
-  width: 664px;
+  width: 648px;
   /*Must be proportional to dropzone width ( 8 cells * 83px width )*/
-  height: 400px;
+  height: 376px;
   /* border: 2px dashed lightgray; */
   background: linear-gradient(180deg, #fc4ded, #60a5fa);
   border-radius: 10px;
@@ -97,8 +95,8 @@ h3 {
 }
 
 .cell {
-  width: 83px;
-  height: 50px;
+  width: 81px;
+  height: 47px;
   border: 1px solid #bfaefd;
   box-sizing: border-box;
   /* Ensures the border doesn't affect dimensions */
@@ -131,12 +129,11 @@ button {
   box-shadow: var(--shadow);
 
   max-width: 100px;
-  margin-left: 10px;
-
+  margin-left: 4px;
 }
 
 .letter {
-  width: 65px;
+  width: 63px;
   height: 50px;
   background: #FFEFD0;
   text-align: center;
@@ -144,7 +141,6 @@ button {
   border-radius: 10px;
   cursor: grab;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
 }
 
 .user_bar {
