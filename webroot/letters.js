@@ -60,5 +60,29 @@ export default class Letters {
           this.container.appendChild(element_letter); // Append the element to the container
       });
     }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
   
