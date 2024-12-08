@@ -47,11 +47,13 @@ function showImageModalThenStartApp() {
   const modal = document.createElement('div');
   modal.id = 'image-modal';
   modal.style.position = 'fixed';
-  modal.style.top = '0';
-  modal.style.left = '0';
-  modal.style.width = '648px';
-  modal.style.height = '100px';
-  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  modal.style.top = '10px';
+  modal.style.left = '10px';
+  modal.style.width = '655px';
+  modal.style.height = '385px';
+  modal.style.borderRadius = '10px';
+
+  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
   modal.style.display = 'flex';
   modal.style.justifyContent = 'center';
   modal.style.alignItems = 'center';
@@ -61,8 +63,8 @@ function showImageModalThenStartApp() {
   const image = document.createElement('img');
   image.src = '/public/wordstackLogo.png'; // fire logo i designed
   image.alt = 'Loading';
-  image.style.maxWidth = '40%';
-  image.style.maxHeight = '40%';
+  image.style.maxWidth = '50%';
+  image.style.maxHeight = '50%';
 
   modal.appendChild(image);
   document.body.appendChild(modal);
@@ -70,7 +72,7 @@ function showImageModalThenStartApp() {
   setTimeout(() => {
     modal.remove(); 
     new App();
-  }, 2000);
+  }, 3000);
 }
 
 // start app son
