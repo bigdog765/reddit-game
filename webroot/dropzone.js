@@ -83,10 +83,10 @@ export default class Dropzone {
         return isAligned && !hasGap
     }
     async checkIfWord(word){
-        // const url = `https://api.datamuse.com/words?sp=${word}`
-        // fetch(url).then((response)=>{
-        //     console.log(response)
-        // })
+        const url = `https://api.datamuse.com/words?sp=${word}`
+        fetch(url).then((response)=>{
+            console.log(response)
+        })
         const response = await fetch('https://example.com', {
             method: 'post',
             headers: {

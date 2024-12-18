@@ -1,5 +1,6 @@
 import Letters from './letters.js'
 import Dropzone from './dropzone.js'
+// devvit playtest r/R3dditHackath0n
 class App {
   constructor() {
     const increaseButton = document.querySelector('#btn-increase');
