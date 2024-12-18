@@ -4,6 +4,8 @@ export default class Cell {
     element
     letter
     submitted = false
+    droppedElement
+    hasDroppedElement = false
     constructor(x, y, parent) {
         this.x = x
         this.y = y
@@ -19,31 +21,45 @@ export default class Cell {
         });
 
         this.element.addEventListener('drop', (event) => {
+            if (this.hasDroppedElement) return; // Prevent duplicate drops
             event.preventDefault();
-            const dataLetter = event.dataTransfer.getData('text/plain'); // Retrieve the dropped item's value
+        
             const letterIndex = event.dataTransfer.getData('drag_letter');
+            const droppedLetter = document.querySelector(`[drag_letter="${letterIndex}"]`);
             
-            const draggedElement = document.querySelector(`[drag_letter="${letterIndex}"]`); // Find the element by custom data attribute
-            
-            // Optionally, clone the dragged element
-            const droppedElement = draggedElement.cloneNode(true);
-
-            droppedElement.style.opacity = '1'; // Reset opacity if it was changed during drag
-
+            if (!droppedLetter) {
+                console.error('Dropped letter not found for drag_letter:', letterIndex);
+                return; // Exit gracefully
+            }
+        
+            // Clone and append the dragged letter
+            this.droppedElement = droppedLetter.cloneNode(true);
+            this.droppedElement.style.opacity = '1';
+        
             const computedStyle = window.getComputedStyle(this.element);
-            droppedElement.style.height = computedStyle.height;
-            droppedElement.style.width = computedStyle.width;
-            
-            // Append the exact visual object into the drop zone
-            this.element.appendChild(droppedElement);
-            this.letter = dataLetter
-            parent.addLetterToCell(this)
+            this.droppedElement.style.height = computedStyle.height;
+            this.droppedElement.style.width = computedStyle.width;
+        
+            this.element.appendChild(this.droppedElement);
+            this.letter = event.dataTransfer.getData('text/plain');
+            this.hasDroppedElement = true;
+            parent.addLetterToCell(this);
         });
+        
     }
     clear(){
         this.element.innerHTML = '';
         this.letter = undefined
+        this.hasDroppedElement = false; // Allow new letters to be dropped
+        this.droppedElement = null; // Clear dropped element reference
     }
+    setSubmitted() {
+        this.submitted = true; // Mark as submitted
+        if (this.droppedElement) {
+            this.droppedElement.style.backgroundColor = 'limegreen'; // Highlight the submitted cell
+        }
+    }
+    
     
 }
   

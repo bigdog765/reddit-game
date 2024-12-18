@@ -60,29 +60,10 @@ export default class Letters {
           this.container.appendChild(element_letter); // Append the element to the container
       });
     }
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    clearContainer() {
+      this.container.innerHTML = ''; // Removes all child elements from the container
+      this.letters = []; // Optionally clear the letters array as well
+    } 
+  
 }
   

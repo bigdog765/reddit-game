@@ -33,8 +33,6 @@ class App {
         }
       }
     });
-    
-    const userLetters = new Letters()
   }
 }
 

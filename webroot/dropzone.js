@@ -1,13 +1,16 @@
 import Cell from './cell.js'
+import Letters from './letters.js';
 export default class Dropzone {
     letterCells = [] // Cells/letters added to zone
     dimensionX = 8
     dimensionY = 8
+    letterRef
     constructor() {
         const dropzone = document.getElementById('dropzone');
         const submitButton = document.getElementById('submit-word');
         const clearButton = document.getElementById('clear');
         this.createCells(this.dimensionX, this.dimensionY, dropzone)
+        this.letterRef = new Letters()
 
         submitButton.addEventListener('click', (event) => {
             this.submitWord()
@@ -83,6 +86,8 @@ export default class Dropzone {
         return isAligned && !hasGap
     }
     async checkIfWord(word){
+        return true
+        // gay asf reddit wont whitelist this domain
         const url = `https://api.datamuse.com/words?sp=${word}`
         fetch(url).then((response)=>{
             console.log(response)
@@ -101,10 +106,17 @@ export default class Dropzone {
         
         console.log('Submitting word:', unSubmittedCells[0].letter, '...')
         const aligned = this.areLettersAligned(unSubmittedCells)
-        console.log('Are letters aligned?', aligned)
         // Deal with if a word logic
-        //this.checkIfWord(unSubmittedCells.toString())
-         
+        const isWord = this.checkIfWord(unSubmittedCells.toString())
+        if(aligned && isWord){
+            // for each unsubmitted cell make it submitted
+            for(let cell of unSubmittedCells){
+                cell.setSubmitted()
+            }
+            // give new letters
+            this.letterRef.clearContainer()
+            this.letterRef = new Letters()
+        }
     }
     clearCells() {
         // Clear letters that haven't been submitted
@@ -113,6 +125,5 @@ export default class Dropzone {
         
         unsubmittedLetters.forEach(cell => cell.clear());
     }
-    
 }
   
